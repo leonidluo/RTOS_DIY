@@ -84,7 +84,7 @@ Purely for reasons of backward compatibility the old method is still valid, but
 to make it clear that new projects should not use it, support for the port
 specific constants has been moved into the deprecated_definitions.h header
 file. */
-#include "deprecated_definitions.h"
+//#include "deprecated_definitions.h"
 
 /* If portENTER_CRITICAL is not defined then including deprecated_definitions.h
 did not result in a portmacro.h header file being included - and it should be
@@ -130,7 +130,7 @@ must be set in the compiler's include path. */
 extern "C" {
 #endif
 
-#include "mpu_wrappers.h"
+//#include "mpu_wrappers.h"
 
 /*
  * Setup the stack of a new task so it is ready to be placed under the
@@ -141,15 +141,15 @@ extern "C" {
 #if( portUSING_MPU_WRAPPERS == 1 )
 	StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters, BaseType_t xRunPrivileged ) PRIVILEGED_FUNCTION;
 #else
-	StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters ) PRIVILEGED_FUNCTION;
+	StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters ) ;
 #endif
 
 /* Used by heap_5.c. */
-typedef struct HeapRegion
-{
-	uint8_t *pucStartAddress;
-	size_t xSizeInBytes;
-} HeapRegion_t;
+//typedef struct HeapRegion
+//{
+//	uint8_t *pucStartAddress;
+//	size_t xSizeInBytes;
+//} HeapRegion_t;
 
 /*
  * Used to define multiple heap regions for use by heap_5.c.  This function
@@ -162,30 +162,30 @@ typedef struct HeapRegion
  * terminated by a HeapRegions_t structure that has a size of 0.  The region
  * with the lowest start address must appear first in the array.
  */
-void vPortDefineHeapRegions( const HeapRegion_t * const pxHeapRegions ) PRIVILEGED_FUNCTION;
+//void vPortDefineHeapRegions( const HeapRegion_t * const pxHeapRegions ) ;
 
 
 /*
  * Map to the memory management routines required for the port.
  */
-void *pvPortMalloc( size_t xSize ) PRIVILEGED_FUNCTION;
-void vPortFree( void *pv ) PRIVILEGED_FUNCTION;
-void vPortInitialiseBlocks( void ) PRIVILEGED_FUNCTION;
-size_t xPortGetFreeHeapSize( void ) PRIVILEGED_FUNCTION;
-size_t xPortGetMinimumEverFreeHeapSize( void ) PRIVILEGED_FUNCTION;
+//void *pvPortMalloc( size_t xSize ) ;
+//void vPortFree( void *pv ) ;
+//void vPortInitialiseBlocks( void ) ;
+//size_t xPortGetFreeHeapSize( void ) ;
+//size_t xPortGetMinimumEverFreeHeapSize( void ) ;
 
 /*
  * Setup the hardware ready for the scheduler to take control.  This generally
  * sets up a tick interrupt and sets timers for the correct tick frequency.
  */
-BaseType_t xPortStartScheduler( void ) PRIVILEGED_FUNCTION;
+BaseType_t xPortStartScheduler( void ) ;
 
 /*
  * Undo any hardware/ISR setup that was performed by xPortStartScheduler() so
  * the hardware is left in its original condition after the scheduler stops
  * executing.
  */
-void vPortEndScheduler( void ) PRIVILEGED_FUNCTION;
+void vPortEndScheduler( void ) ;
 
 /*
  * The structures and methods of manipulating the MPU are contained within the

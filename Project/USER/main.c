@@ -63,10 +63,10 @@ void Task1_Entry(void *p_arg)
     {
         flag1 = 1;
         LED0 = 1;
-        delay_ms(500);
+        delay_ms(100);
         flag1 = 0;
         LED0 = 0;
-        delay_ms(500);
+        delay_ms(100);
         taskYIELD();
     }
     
@@ -78,10 +78,10 @@ void Task2_Entry(void *p_arg)
     {
         flag2 = 1;
         LED1 = 1;
-        delay_ms(500);
+        delay_ms(100);
         flag2 = 0;
         LED1 = 0;
-        delay_ms(500);
+        delay_ms(100);
         taskYIELD();
     }
 }
